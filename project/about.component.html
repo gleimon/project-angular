@@ -1,0 +1,70 @@
+<div class="container"
+  fxLayout="column"
+  fxLayoutGap="10px">
+
+  <div fxFlex>
+    <div>
+        <h3>Sobre</h3>
+        <hr>
+    </div>
+  </div>
+
+  <div fxFlex>
+    <div fxLayout="column" fxLayout.gt-sm="row">
+      <div fxFlex="70">
+        <h2>Nossa Historia</h2>
+        <p>Somos referencia na area</p>
+        
+      </div>
+      <div fxFlex="30">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>
+            <h2>Facts At a Glance</h2>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <dl>
+              <dt>Começou</dt>
+              <dd>01 Mai 2021</dd>
+              <dt>A</dt>
+              <dd>LTDA.</dd>
+              <dt>Outra</dt>
+              <dd>$1000000</dd>
+              <dt>Empregados</dt>
+              <dd>40</dd>
+            </dl>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div fxFlex>
+    <div>
+      <h3 matLine>Corporate Leadership </h3>
+    </div>
+  </div>
+
+  <div fxFlex>
+    <mat-list>
+      <mat-list-item matLine *ngFor="let leader of leaders" [@expand]>
+        <img matListAvatar src="{{BaseURL + leader.image}}" alt={{leader.name}}>
+        <p matLine>
+          <span matLine>{{leader.name}} {{leader.abbr}}</span>
+          <span matLine>{{leader.designation}}</span>
+          <span matLine>{{leader.description}}</span>
+        </p>
+      </mat-list-item>
+    </mat-list>
+    <div fxFlex [hidden]="leaders || errMess">
+      <mat-spinner></mat-spinner><h4>Carregando</h4>
+     </div>
+     <div fxFlex *ngIf="errMess">
+      <h2>Error</h2>
+      <h4>{{errMess}}</h4>
+    </div>
+  </div>
+
